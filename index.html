@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WildCare - Animal Rescue</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7faf7;
+    color: #222;
+}
+
+/* NAVBAR */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 15px #0002;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #16833b;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #16833b;
+}
+
+/* HERO */
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    padding: 80px 8%;
+    color: white;
+
+    background:
+    linear-gradient(90deg, #000b, #0003),
+    url("https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=2000&q=90")
+    center/cover;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: 65px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #ffc107;
+}
+
+.hero p {
+    font-size: 21px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: #ff9800;
+    color: white;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.btn:hover {
+    background: #e68900;
+    transform: translateY(-2px);
+}
+
+.btn.green {
+    background: #16833b;
+}
+
+/* SECTIONS */
+section {
+    padding: 80px 8%;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.title h2 {
+    font-size: 38px;
+    color: #16833b;
+    margin-bottom: 12px;
+}
+
+.title p {
+    color: #666;
+}
+
+/* RESCUE CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px #0002;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 22px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* STATS */
+.stats {
+    background: #16833b;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    gap: 20px;
+}
+
+.stat h2 {
+    font-size: 40px;
+    color: #ffd54f;
+}
+
+.stat p {
+    margin-top: 8px;
+}
+
+/* GALLERY */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.04);
+}
+
+/* ABOUT */
+.about {
+    background: #eaf7ed;
+}
+
+.about-box {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-box p {
+    line-height: 1.8;
+    color: #555;
+    font-size: 18px;
+}
+
+/* CONTACT */
+.contact {
+    background: white;
+}
+
+form {
+    max-width: 550px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+textarea {
+    height: 130px;
+}
+
+/* FOOTER */
+footer {
+    background: #103d20;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer h2 {
+    margin-bottom: 10px;
+}
+
+/* MOBILE */
+@media(max-width: 800px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 7px;
+    }
+
+    .hero {
+        min-height: 550px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 500px) {
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+
+    <div class="logo">
+        🐾 WildCare
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#rescue">Rescue</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            Every Life<br>
+            <span>Deserves a Chance.</span>
+        </h1>
+
+        <p>
+            We rescue injured, abandoned and helpless animals
+            and give them love, medical care and a second chance
+            at life.
+        </p>
+
+        <a href="#rescue" class="btn">
+            🐾 Rescue an Animal
+        </a>
+
+        <a href="#contact" class="btn green">
+            ❤️ Donate & Help
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- RESCUE -->
+
+<section id="rescue">
+
+    <div class="title">
+
+        <h2>🐾 Animals We Rescue</h2>
+
+        <p>
+            From tiny birds to wild animals — every life matters.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <!-- DOG -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=900&q=90">
+
+            <div class="card-content">
+
+                <h3>🐶 Dogs</h3>
+
+                <p>
+                    Rescue and rehabilitation for abandoned
+                    and injured dogs.
+                </p>
+
+                <button class="btn" onclick="rescue('Dog')">
+                    Help a Dog
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAT -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=900&q=90">
+
+            <div class="card-content">
+
+                <h3>🐱 Cats</h3>
+
+                <p>
+                    Safe shelter, medical treatment and
+                    adoption for rescued cats.
+                </p>
+
+                <button class="btn" onclick="rescue('Cat')">
+                    Help a Cat
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- BIRD -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?auto=format&fit=crop&w=900&q=90">
+
+            <div class="card-content">
+
+                <h3>🦜 Birds</h3>
+
+                <p>
+                    Protecting injured and rescued birds
+                    and returning them to nature.
+                </p>
+
+                <button class="btn" onclick="rescue('Bird')">
+                    Help a Bird
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- WILDLIFE -->
+
+        <div class="card">
+
+            <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=90">
+
+            <div class="card-content">
+
+                <h3>🦁 Wildlife</h3>
+
+                <p>
+                    Supporting wildlife rescue, rehabilitation
+                    and safe release.
+                </p>
+
+                <button class="btn" onclick="rescue('Wildlife')">
+                    Help Wildlife
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STATS -->
+
+<section class="stats">
+
+    <div class="stat">
+
+        <h2>2,500+</h2>
+
+        <p>Animals Rescued</p>
+
+    </div>
+
+    <div class="stat">
+
+        <h2>1,800+</h2>
+
+        <p>Animals Adopted</p>
+
+    </div>
+
+    <div class="stat">
+
+        <h2>500+</h2>
+
+        <p>Birds Released</p>
+
+    </div>
+
+    <div class="stat">
+
+        <h2>120+</h2>
+
+        <p>Volunteers</p>
+
+    </div>
+
+</section>
+
+
+<!-- PHOTO GALLERY -->
+
+<section id="gallery">
+
+    <div class="title">
+
+        <h2>📸 Our Beautiful Wildlife</h2>
+
+        <p>
+            Every creature deserves freedom, care and protection.
+        </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+        <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=900&q=90">
+
+        <img src="https://images.unsplash.com/photo-1555169062-013468b47731?auto=format&fit=crop&w=900&q=90">
+
+        <img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&w=900&q=90">
+
+        <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=90">
+
+        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=900&q=90">
+
+        <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&w=900&q=90">
+
+        <img src="https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=900&q=90">
+
+        <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=900&q=90">
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+    <div class="about-box">
+
+        <div class="title">
+
+            <h2>❤️ Why We Rescue</h2>
+
+        </div>
+
+        <p>
+
+            Every day, animals are abandoned, injured or separated
+            from their families. WildCare works with volunteers,
+            veterinarians and animal lovers to provide emergency
+            rescue, medical care, food, shelter and rehabilitation.
+
+            Our ultimate goal is simple:
+
+            <strong>
+                rescue them, heal them and give them a better life.
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <div class="title">
+
+        <h2>📩 Join the Rescue Mission</h2>
+
+        <p>
+            Want to volunteer, adopt or help an animal?
+        </p>
+
+    </div>
+
+
+    <form onsubmit="sendMessage(event)">
+
+        <input
+            type="text"
+            placeholder="Your Name"
+            required
+        >
+
+        <input
+            type="email"
+            placeholder="Your Email"
+            required
+        >
+
+        <textarea
+            placeholder="Tell us how you would like to help..."
+            required
+        ></textarea>
+
+        <button class="btn" type="submit">
+            Send Message ❤️
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>🐾 WildCare Animal Rescue</h2>
+
+    <p>
+        Protect • Rescue • Heal • Release
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 WildCare. Every Life Matters.
+    </p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function rescue(animal) {
+
+    alert(
+        "❤️ Thank you for helping " +
+        animal +
+        " rescue!\n\n" +
+        "Together we can save lives. 🐾"
+    );
+
+}
+
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    alert(
+        "Thank you for contacting WildCare! 🐾❤️\n\n" +
+        "Our rescue team will contact you soon."
+    );
+
+    event.target.reset();
+
+}
+
+</script>
+
+</body>
+</html>
